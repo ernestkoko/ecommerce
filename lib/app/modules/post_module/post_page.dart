@@ -20,7 +20,7 @@ class PostPage extends GetView<PostPageController> {
             child: controller.obx((state) => ListView.builder(
                   itemCount: state!.length,
                   itemBuilder: (ctx, int index) => GestureDetector(
-                    onTap: () => controller.navigateToPostCommentPage(id: state[index].id!),
+                    onTap: () => controller.navigateToPostDetailsPage(id: state[index].id!),
                     child: CustomCard(
                       id: state[index].id.toString(),
                       child: Row(

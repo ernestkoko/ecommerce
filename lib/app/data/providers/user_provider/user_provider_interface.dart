@@ -23,4 +23,7 @@ Future<dynamic> getPosts({required int id})async{
 Future<dynamic> getPostComments({required int id})async{
   throw UnimplementedError("getPostComments not implemented");
 }
+Future<dynamic> getPost({required int id})async{
+  throw UnimplementedError("getPostComments not implemented");
+}
 }

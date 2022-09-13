@@ -57,4 +57,16 @@ class UserProviderServer extends UserProviderInterface {
       rethrow;
     }
   }
+  @override
+  Future<dynamic> getPost({required int id}) async {
+    try {
+      final response = await http.get(Uri.parse("${api}posts/$id"));
+
+      final body = json.decode(response.body.toString());
+
+      return body;
+    } catch (error) {
+      rethrow;
+    }
+  }
 }

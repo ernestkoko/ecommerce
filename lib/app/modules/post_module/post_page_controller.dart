@@ -35,7 +35,7 @@ class PostPageController extends GetxController with StateMixin<List<Post>> {
     }
   }
 
-  navigateToPostCommentPage({required int id}) {
-    Get.toNamed(Routes.postCommentPage, arguments: id);
+  navigateToPostDetailsPage({required int id}) {
+    Get.toNamed(Routes.postDetailsPage, arguments: id);
   }
 }

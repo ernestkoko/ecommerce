@@ -37,4 +37,13 @@ class UserProvider {
       rethrow;
     }
   }
+
+  static Future<dynamic> getPost({required int id}) async {
+    try {
+      final result = await _userProviderInterface.getPost(id: id);
+      return result;
+    } catch (error) {
+      rethrow;
+    }
+  }
 }

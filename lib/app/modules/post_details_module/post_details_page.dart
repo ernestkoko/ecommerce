@@ -9,11 +9,67 @@ class PostDetailsPage extends GetView<PostDetailsPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(
+      appBar: CustomAppBar(
         title: "Post Details",
+        actions: [
+          Center(
+            child: Container(
+              margin: const EdgeInsets.only(right: 0),
+              child: TextButton(
+                  onPressed: controller.navigateToPostCommentsPage,
+                  child: Text(
+                    "View comments",
+                    style:
+                        TextStyle(color: Get.theme.textTheme.headline1!.color),
+                  )),
+            ),
+          )
+        ],
       ),
       body: SafeArea(
-        child: Container(),
+        child: Container(
+          padding:
+              const EdgeInsets.only(left: 10, right: 10, top: 12, bottom: 10),
+          child: controller.obx((state) => Container(
+              margin: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(8),
+              decoration: ShapeDecoration(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                          color: Get.theme.primaryColor.withOpacity(0.5)))),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("${state!.id} "),
+                  Text("${state.userId} "),
+                  Text(
+                    "${state.title} ",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                        color: Get.theme.primaryColorDark),
+                  ),
+                  const Divider(),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  const Text(
+                    "Body",
+                    style: TextStyle(fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  Text(
+                    "${state.body} ",
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ))),
+        ),
       ),
     );
   }
