@@ -14,9 +14,11 @@ class HomePage extends GetView<HomePageController> {
       onWillPop: _willPop,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text(
             "Users",
           ),
+
         ),
         body: SafeArea(
           child: Container(
@@ -92,21 +94,24 @@ class HomePage extends GetView<HomePageController> {
 
   Future<bool> _willPop() async {
     bool pop = false;
-    await Get.defaultDialog(title: "Do you want to leave?", middleText: '', actions: [
-      ElevatedButton(
-          onPressed: () async {
-            Get.back();
-            pop = true;
-          },
-          child: const Text("Yes")),
-      ElevatedButton(
-          onPressed: () async {
-            Get.back();
-            pop = false;
-          },
-          child: const Text("No")),
-    ]);
-print(pop);
+    await Get.defaultDialog(
+        title: "Do you want to leave?",
+        middleText: '',
+        actions: [
+          ElevatedButton(
+              onPressed: () async {
+                Get.back();
+                pop = true;
+              },
+              child: const Text("Yes")),
+          ElevatedButton(
+              onPressed: () async {
+                Get.back();
+                pop = false;
+              },
+              child: const Text("No")),
+        ]);
+    print(pop);
     return await Future.value(pop);
   }
 }

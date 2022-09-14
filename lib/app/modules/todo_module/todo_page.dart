@@ -14,47 +14,54 @@ class TodoPage extends GetView<TodoPageController> {
       appBar: const CustomAppBar(
         title: Text("Todos"),
       ),
+
       body: Container(
-        margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+        color: Get.theme.primaryColor,
         child: SafeArea(
           child: controller.obx(
-            (state) => ListView.builder(
-              itemCount: state!.length,
-              itemBuilder: (BuildContext ctx, int index) => CustomCard(
-                id: state[index].id.toString(),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${state[index].userId}",
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w600,
-                          color: Get.theme.primaryColorDark),
+              (state) => ListView.builder(
+                    itemCount: state!.length,
+                    itemBuilder: (BuildContext ctx, int index) => CustomCard(
+                      id: state[index].id.toString(),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${state[index].userId}",
+                            style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Get.theme.primaryColorDark),
+                          ),
+                          Text(
+                            "${state[index].title}",
+                            style: const TextStyle(
+                                overflow: TextOverflow.ellipsis,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            "Completed: ${state[index].completed}",
+                            style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700,
+                                color: Get.theme.primaryColorDark
+                                    ),
+                          )
+                        ],
+                      ),
                     ),
-                    Text(
-                      "${state[index].title}",
-                      style: const TextStyle(
-                          overflow: TextOverflow.ellipsis,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      "Completed: ${state[index].completed}",
-                      style: TextStyle(
-                          fontSize: 10,
-                          fontWeight: FontWeight.w700,
-                          color: Get.theme.primaryColorDark.withOpacity(0.5)),
-                    )
-                  ],
+                  ),
+              onError: (error) => onError(
+                    error: error,
+                    onPressed: controller.getTodo,
+                  ),
+              onLoading:const  Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
                 ),
-              ),
-            ),
-            onError: (error) => onError(
-              error: error,
-              onPressed: controller.getTodo,
-            ),
-          ),
+              )),
         ),
       ),
     );
