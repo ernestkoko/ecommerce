@@ -63,10 +63,7 @@ class CreatePostPageController extends GetxController {
 
   void createPost() async {
     if (!canSubmit()) {
-      Get.defaultDialog(
-          title: "Error",
-          titleStyle: TextStyle(color: Get.theme.errorColor),
-          middleText: "The form must be filled!");
+      errorNotificationDialog(middleText: "The form must be filled!");
       return;
     } else {
       loading.value = true;
@@ -75,20 +72,22 @@ class CreatePostPageController extends GetxController {
         if (formState.value == FormState.create) {
           //create post
 
-          final result = await CreatePostPageProvider.createPost(
+           await CreatePostPageProvider.createPost(
               title: title.value, body: body.value);
           notificationDialog(
-              title: "Create", middleText: "Post created successfully", popPage: true);
+              title: "Create",
+              middleText: "Post created successfully",
+              popPage: true);
         } else {
           //edit post
 
-          final result = await CreatePostPageProvider.editPost(
+           await CreatePostPageProvider.editPost(
               id: post.value.id ?? -1, body: body.value, title: title.value);
           notificationDialog(
-              title: "Update", middleText: "Post updated successfully", popPage: true);
+              title: "Update",
+              middleText: "Post updated successfully",
+              popPage: true);
         }
-
-
       } catch (error) {
         errorNotificationDialog(middleText: error.toString());
       } finally {

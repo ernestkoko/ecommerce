@@ -17,12 +17,14 @@ class CustomTextField extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(bottom: 5),
-          padding:const  EdgeInsets.symmetric(vertical: 2, horizontal: 5),
+          padding:const  EdgeInsets.symmetric(vertical: 2, horizontal: 15),
             decoration: ShapeDecoration(
                 color: Get.theme.primaryColor.withOpacity(0.5),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(3))),
-            child: Text(hintText ?? "")),
+            child: Text(hintText ?? "", style:const  TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w500),)),
         TextField(
           onChanged: onChanged,
           controller: controller,
