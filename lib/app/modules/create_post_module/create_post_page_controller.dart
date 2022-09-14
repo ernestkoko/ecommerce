@@ -81,6 +81,7 @@ class CreatePostPageController extends GetxController {
         } else {
           //edit post
 
+
            await CreatePostPageProvider.editPost(
               id: post.value.id ?? -1, body: body.value, title: title.value);
           notificationDialog(
