@@ -1,3 +1,5 @@
+import 'package:ecommerce/app/modules/create_post_module/create_post_page.dart';
+import 'package:ecommerce/app/modules/create_post_module/create_post_page_binding.dart';
 import 'package:ecommerce/app/modules/home_page_module/home_page.dart';
 import 'package:ecommerce/app/modules/home_page_module/home_page_binding.dart';
 import 'package:ecommerce/app/modules/post_comments_module/post_comment_page_binding.dart';
@@ -37,6 +39,11 @@ abstract class Pages {
       name: Routes.postCommentPage,
       page: () => const PostCommentsPage(),
       binding: PostCommentPageBinding(),
+    ),
+    GetPage(
+      name: Routes.createPostPage,
+      page: () =>const  CreatePostPage(),
+      binding: CreatePostPageBinding(),
     )
   ];
 }

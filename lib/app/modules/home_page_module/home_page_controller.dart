@@ -12,11 +12,11 @@ class HomePageController extends GetxController with StateMixin<List<User>> {
 
   @override
   void onReady() {
-    _getUsers();
+    getUsers();
     super.onReady();
   }
 
-  void _getUsers() async {
+  void getUsers() async {
     final list = <User>[];
     try {
       change(list, status: RxStatus.loading());
@@ -34,6 +34,7 @@ class HomePageController extends GetxController with StateMixin<List<User>> {
       change(null, status: RxStatus.error(error.toString()));
     }
   }
+
 
   navigateToTodoPage({required int id}){
     Get.toNamed(Routes.todoPage, arguments: id);

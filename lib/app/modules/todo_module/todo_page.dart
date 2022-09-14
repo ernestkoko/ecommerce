@@ -1,6 +1,7 @@
 import 'package:ecommerce/app/modules/todo_module/todo_page_controller.dart';
 import 'package:ecommerce/app/widgets/app_bar.dart';
 import 'package:ecommerce/app/widgets/card.dart';
+import 'package:ecommerce/app/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,7 +12,7 @@ class TodoPage extends GetView<TodoPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: "Todos",
+        title: Text("Todos"),
       ),
       body: Container(
         margin: const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
@@ -48,6 +49,10 @@ class TodoPage extends GetView<TodoPageController> {
                   ],
                 ),
               ),
+            ),
+            onError: (error) => onError(
+              error: error,
+              onPressed: controller.getTodo,
             ),
           ),
         ),

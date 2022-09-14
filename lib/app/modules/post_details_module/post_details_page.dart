@@ -1,7 +1,8 @@
-import 'package:ecommerce/app/modules/post_details_module/post_details_page_controller.dart';
 import 'package:ecommerce/app/widgets/app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'post_details_page_controller.dart';
 
 class PostDetailsPage extends GetView<PostDetailsPageController> {
   const PostDetailsPage({Key? key}) : super(key: key);
@@ -10,18 +11,18 @@ class PostDetailsPage extends GetView<PostDetailsPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: "Post Details",
+        title: const Text("Post Details"),
         actions: [
           Center(
             child: Container(
               margin: const EdgeInsets.only(right: 0),
-              child: TextButton(
-                  onPressed: controller.navigateToPostCommentsPage,
-                  child: Text(
-                    "View comments",
-                    style:
-                        TextStyle(color: Get.theme.textTheme.headline1!.color),
-                  )),
+              child: ElevatedButton(
+                onPressed: controller.navigateToPostCommentsPage,
+                child: Text(
+                  "comments",
+                  style: TextStyle(color: Get.theme.textTheme.headline1!.color),
+                ),
+              ),
             ),
           )
         ],
@@ -30,7 +31,8 @@ class PostDetailsPage extends GetView<PostDetailsPageController> {
         child: Container(
           padding:
               const EdgeInsets.only(left: 10, right: 10, top: 12, bottom: 10),
-          child: controller.obx((state) => Container(
+          child: controller.obx(
+            (state) => Container(
               margin: const EdgeInsets.all(12),
               padding: const EdgeInsets.all(8),
               decoration: ShapeDecoration(
@@ -68,7 +70,9 @@ class PostDetailsPage extends GetView<PostDetailsPageController> {
                     textAlign: TextAlign.center,
                   ),
                 ],
-              ))),
+              ),
+            ),
+          ),
         ),
       ),
     );

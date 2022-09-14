@@ -16,10 +16,10 @@ class TodoPageController extends GetxController with StateMixin<List<Todo>> {
   @override
   onReady() {
     super.onReady();
-    _getTodo();
+    getTodo();
   }
 
-  _getTodo() async {
+  getTodo() async {
     final todos = <Todo>[];
     try {
       change(todos, status: RxStatus.loading());

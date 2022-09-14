@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({Key? key, this.id, this.child}) : super(key: key);
+  const CustomCard({Key? key, this.id, this.child, this.loading = false})
+      : super(key: key);
   final String? id;
   final Widget? child;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,15 @@ class CustomCard extends StatelessWidget {
                   shape: CircleBorder(
                       side:
                           BorderSide(color: Get.theme.primaryColor, width: 2))),
-              child: Text(id ?? ""),
+              child: !loading
+                  ? Text(id ?? "")
+                  :const  SizedBox(
+                height: 10,
+                    width: 10,
+                    child:  CircularProgressIndicator(
+                        strokeWidth: 2,
+                      ),
+                  ),
             ),
             const SizedBox(
               width: 10,

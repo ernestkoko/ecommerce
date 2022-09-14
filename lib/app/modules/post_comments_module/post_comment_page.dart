@@ -12,7 +12,7 @@ class PostCommentsPage extends GetView<PostCommentPageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const CustomAppBar(
-        title: "Post Comments",
+        title: Text("Post Comments"),
       ),
       body: SafeArea(
         child: Container(

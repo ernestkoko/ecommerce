@@ -9,4 +9,13 @@ abstract class PostPageProvider {
       rethrow;
     }
   }
+
+  static Future<dynamic> deletePost({required int id}) async {
+    try {
+      final result = await UserProvider.deletePost(id: id);
+      return result;
+    } catch (error) {
+      rethrow;
+    }
+  }
 }
