@@ -41,17 +41,13 @@ class CreatePostPageController extends GetxController {
     }
   }
 
-  @override
-  onReady() {
-    super.onReady();
-  }
+
 
   onTitleChanged(String text) => title.value = text;
 
-  onBodyChanged(String text) {
-    body.value = text;
-    print(text);
-  }
+  onBodyChanged(String text) =>
+      body.value = text;
+
 
   bool canSubmit() {
     if (title.isEmpty || body.isEmpty) {
@@ -72,7 +68,7 @@ class CreatePostPageController extends GetxController {
         if (formState.value == FormState.create) {
           //create post
 
-           await CreatePostPageProvider.createPost(
+          await CreatePostPageProvider.createPost(
               title: title.value, body: body.value);
           notificationDialog(
               title: "Create",
@@ -82,7 +78,7 @@ class CreatePostPageController extends GetxController {
           //edit post
 
 
-           await CreatePostPageProvider.editPost(
+          await CreatePostPageProvider.editPost(
               id: post.value.id ?? -1, body: body.value, title: title.value);
           notificationDialog(
               title: "Update",
